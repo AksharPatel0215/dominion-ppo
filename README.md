@@ -1,43 +1,35 @@
-# Reversi PPO
+# Dominion PPO
 
-A learning project: implement standard 8x8 Reversi and PPO, then build an
-interactive website for playing against trained agents and running simulations.
+PPO implemented from scratch with PyTorch to learn Dominion.
+Planned website: play against agents and watch simulations.
 
-## Current status
+## Scope
 
-Checkpoint 1: game-rule method placeholders. The game and PPO are not implemented.
-The implementation is written by the project author, with guided explanations
-and scaffolding assistance.
-
-## Roadmap
-
-1. Game engine and rule checks.
-2. Random and scripted baseline opponents.
-3. Policy/value networks and PPO implemented directly with PyTorch.
-4. Reproducible evaluation and saved agent checkpoints.
-5. Interactive website: play against an agent or watch simulations.
-6. Training efficiency and presentation improvements.
+Two players, base-game rules, fixed Kingdom, no expansions.
+Planned Kingdom: Village, Smithy, Market, Festival, Laboratory, Council Room,
+Chapel, Workshop, Moneylender, Gardens. Effects will be added in stages.
+Game logic, PPO, and website are not implemented yet.
 
 ## First checkpoint
 
-Use Python 3.10 or newer. No third-party packages are needed yet.
-Run commands from this project directory.
+Python 3.10+. No third-party dependencies required yet.
 
 ```sh
 python3 -m unittest discover -s tests -v
 ```
 
-The checks intentionally report errors until the placeholders in
-`reversi/game.py` are implemented. Implement in order:
+Tests intentionally fail until the placeholders are implemented.
+First implement starting decks, drawing and reshuffling, and basic scoring.
 
-1. `initial_board`: construct the starting board with independent rows.
-2. `get_flips`: identify captures in all eight directions without mutation.
-3. `legal_moves`: enumerate placements that capture at least one disc.
+## Roadmap
 
-Board cells use `0` for empty, `1` for black, and `-1` for white.
-Coordinates are zero-based `(row, column)`. White starts at `(3, 3)` and
-`(4, 4)`; black starts at `(3, 4)` and `(4, 3)`. Black moves first.
+1. Deck operations and card definitions.
+2. Turn phases, supply, card effects, and game termination.
+3. Baselines and observations that respect hidden information.
+4. Networks, rollouts, advantages, and clipped PPO.
+5. Evaluation across random seeds and opponents.
+6. Interactive website and training comparisons.
 
-The game engine will remain separate from training and display code so it can
-serve both training and the future website. PyTorch will be introduced when we
-reach neural networks; no prebuilt PPO implementation will be used.
+Official rules: https://www.riograndegames.com/wp-content/uploads/2016/09/Dominion2E.pdf
+
+Author-written implementation with guided explanations and scaffolding assistance.
